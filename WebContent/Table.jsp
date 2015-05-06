@@ -1,5 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <%
+ 	String row = request.getParameter( "r" );
+ 	String col = request.getParameter( "c" );
+ 	//자바 코드가 들어감
+ 	
+ 	int nRow;
+ 	if(row ==null){
+ 		nRow = 3;
+ 	}else {
+ 		nRow = Integer.parseInt(row);
+ 	}
+ 	
+ 	int nCol;
+ 	if(col ==null){
+ 		nCol = 3;
+ 	}else {
+ 		nCol = Integer.parseInt(col);
+ 	}
+ %>   
+ <%=row %>
+ <br>
+ <%=col %>   
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,22 +32,20 @@
 </head>
 <body>
 <table border='1px' cellspacing = '0px' cellpadding='10px'>
-	<tr>
-	<td>cell(0,0)</td>
-	<td>cell(0,1)</td>
-	<td>cell(0,2)</td>	
-	</tr>
-	
-	<tr>
-	<td>cell(1,0)</td>
-	<td>cell(1,1)</td>
-	<td>cell(1,2)</td>	
-	</tr>
-	
-	<tr>
-	<td>cell(2,0)</td>
-	<td>cell(2,1)</td>
-	<td>cell(2,2)</td>	
-	</tr>
+	<%
+	for(int i = 0; i<nRow; i++){
+	%>
+		<tr>
+			<%
+			for(int j=0; j<nCol; j++){
+			%>
+			<td>cell(<%=i %>,<%=j %>)</td>
+			<%
+			}
+			%>
+		</tr>
+	<%
+	}
+	%>
 </body>
 </html>

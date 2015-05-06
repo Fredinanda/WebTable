@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class tableservlet
+ * Servlet implementation class ParamServelt
  */
-@WebServlet("/tableservlet")
-public class tableservlet extends HttpServlet {
+@WebServlet("/param")
+public class ParamServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public tableservlet() {
+    public ParamServelt() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,9 +29,7 @@ public class tableservlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		doPost(request, response);
-		
 	}
 
 	/**
@@ -39,41 +37,15 @@ public class tableservlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		String a = request.getParameter("a");
+		String b = request.getParameter("b");
+		
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		String row = request.getParameter("r");
-		String col = request.getParameter("c");
+		out.println("a = "+a + ",b = "+ b);
 		
-		int nRow;int nCol;
-		
-		if(row != null){
-			
-			nRow = Integer.parseInt(row);
-		}else{
-			nRow = 3;
-		}
-		
-		if(col != null){
-			
-			nCol= Integer.parseInt(col);
-		}else{
-			nCol = 3;
-		}
-		
-		 
-		
-		out.println("<table border='1px' cellspacing = '0px' cellpadding='10px'>");
-		for(int i = 0 ; i< nRow; i++){
-			out.println("<tr>");
-				for(int j = 0; j<nCol; j++){
-					out.println("<td>");
-					out.println("ceil ("+i+", "+j+")");
-					out.println("</td>");
-				}
-			out.println("</tr>");
-		}
-		out.println("</table>");
 	}
 
 }
